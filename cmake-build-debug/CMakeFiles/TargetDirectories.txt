@@ -1,3 +1,0 @@
-C:/Users/Stanislav/Desktop/dkr_informatics/cmake-build-debug/CMakeFiles/dkr_informatics.dir
-C:/Users/Stanislav/Desktop/dkr_informatics/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Stanislav/Desktop/dkr_informatics/cmake-build-debug/CMakeFiles/rebuild_cache.dir
