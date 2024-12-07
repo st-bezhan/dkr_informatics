@@ -34,5 +34,17 @@ void calculate_sum() {
     printf("%lf\n", sum);
 }
 
+unsigned int calculate_multiplies_of_five(int array[], int size) {
+    unsigned int count = 0;
+    for (unsigned int i = 0; i < size; i++) {
+        if (array[i] % 5 == 0 ) { // includes 0 as dividable by 5 ?//// && array[i] != 0???
+            count++;
+            printf("\nTHIS: %d", array[i]);
+        }
+    }
+
+    printf("\n%d", count);
+    return count;
+}
 
 

@@ -12,5 +12,7 @@ long double get_starting_number();
 unsigned int select_array_size();
 unsigned int select_way_of_array_handling();
 void input_manual_array(int arr[], int size);
+void input_random_array(int arr[], int size);
+
 
 #endif //INPUT_METHODS_H

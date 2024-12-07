@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include "input_methods.h"
 
+#include <stdlib.h>
+#include <time.h>
+
 unsigned int validate_input(const char* formatSpecifier, void* value, char message[]) {
     char input[100];
     printf("%s", message);
@@ -74,6 +77,16 @@ void input_manual_array(int arr[], int size) {
         printf("arr[%d]: ", i);
         validate_input("%d", &arr[i], "\n");
     }
+}
+
+void input_random_array(int arr[], int size) {
+    srand(time(0));  // time is needed to have different seed poing each start of the program
+    printf("\nArray is filled: {");
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 100;  // 0 - 99
+        printf(" %d", arr[i]);
+    }
+    printf(" }\n");
 }
 
 

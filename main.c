@@ -15,14 +15,17 @@ int main(void) {
             unsigned int size = select_array_size();
             unsigned int way = select_way_of_array_handling();
             int array[size];
-            if (way == 1) {
 
+            if (way == 1) {
+                input_random_array(array, size);
             } else if (way == 2) {
                 input_manual_array(array, size);
                 for (unsigned int i = 0; i < size; i++) {
                     printf("\n%d", array[i]);
                 }
             }
+
+            calculate_multiplies_of_five(array, size);
             break;
         }
         case 3: {
