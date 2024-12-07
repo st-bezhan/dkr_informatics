@@ -6,7 +6,9 @@
 #define INPUT_METHODS_H
 
 unsigned int validate_input(const char* formatSpecifier, void* value, char message[]);
-unsigned long long get_length();
+unsigned long get_length();
 long double get_starting_number();
+unsigned int select_array_size();
+unsigned int select_way_of_array_handling();
 
 #endif //INPUT_METHODS_H
