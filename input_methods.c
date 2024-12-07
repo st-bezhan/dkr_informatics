@@ -19,7 +19,7 @@ unsigned int validate_input(const char* formatSpecifier, void* value, char messa
     } while (1);
 }
 
-unsigned int get_length() {
+unsigned long long get_length() {
     int N = 0;
     do {
         validate_input("%d", &N, "\nType in N: ");
@@ -27,7 +27,7 @@ unsigned int get_length() {
     return N;
 }
 
-double get_starting_number() {
+long double get_starting_number() {
     double starting_number;
     validate_input("%lf", &starting_number, "\nType in starting_number: ");
     return starting_number;
