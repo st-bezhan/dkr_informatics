@@ -19,6 +19,20 @@ unsigned int validate_input(const char* formatSpecifier, void* value, char messa
     } while (1);
 }
 
+//ENTRENCE
+unsigned int select_program_to_execute() {
+    int program = 0;
+    do {
+        validate_input("%d", &program, "\nSelect program to execute:"
+                                       "\n[1] First task;"
+                                       "\n[2] Second task"
+                                       "\n[3] Third task\n");
+    } while (program <= 0 || program > 3);
+
+    return program;
+}
+
+
 // 1 TASK
 unsigned long get_length() {
     int N = 0;
@@ -35,16 +49,15 @@ long double get_starting_number() {
 }
 
 // 2 TASK
-unsigned int select_program_to_execute() {
-    int program = 0;
+unsigned int select_way_of_array_handling() {
+    int way = 0;
     do {
-        validate_input("%d", &program, "\nSelect program to execute:"
-                                       "\n[1] First task;"
-                                       "\n[2] Second task"
-                                       "\n[3] Third task");
-    } while (program <= 0 || program > 3);
+        validate_input("%d", &way, "\nSelect way to handle an array:"
+                                   "\n[1] Set size and put in random numbers"
+                                   "\n[2] Set size and numbers\n");
+    } while (way <= 0 || way > 2);
 
-    return program;
+    return way;
 }
 
 unsigned int select_array_size() {
@@ -56,14 +69,12 @@ unsigned int select_array_size() {
     return size;
 }
 
-unsigned int select_way_of_array_handling() {
-    int way = 0;
-    do {
-        validate_input("%d", &way, "\nSelect way to handle an array:"
-                                   "\n[1] Set size and put in random numbers"
-                                   "\n[2] Set size and numbers");
-    } while (way <= 0 || way > 2);
-
-    return way;
+void input_manual_array(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("arr[%d]: ", i);
+        validate_input("%d", &arr[i], "\n");
+    }
 }
+
+
 
