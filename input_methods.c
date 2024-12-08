@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "input_methods.h"
 
+#include <ctype.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -89,5 +90,52 @@ void input_random_array(int arr[], int size) {
     printf(" }\n");
 }
 
+
+//TASK 3
+unsigned int is_valid_word(const char *word) {
+    unsigned int has_alphabetical_numerical_value = 0;
+    for (unsigned i = 0; word[i] != '\0'; i ++) {
+        if (isalnum(word[i])) {
+            has_alphabetical_numerical_value = 1;
+        }
+    }
+    return has_alphabetical_numerical_value;
+}
+void get_keyboard_input() {
+    unsigned int const max_word_length = 1000;
+    char ch, word[1000] = { 0 };
+    unsigned int char_index = 0;
+    unsigned int words_count = 0;
+
+    printf("\nStart typing text. [Ctrl + Z] to stop.\n");
+
+    while ((ch = getchar()) != EOF) {
+        if (isspace(ch)) {
+            // Якщо зустріли роздільник, перевіряємо, чи слово є валідним
+            if (char_index > 0) {
+                word[char_index] = '\0'; // Завершуємо слово
+                if (is_valid_word(word)) {
+                    words_count++;
+                }
+                char_index = 0; // Скидаємо індекс для нового слова
+            }
+        } else {
+            // Додаємо символ до слова
+            if (char_index < max_word_length - 1) {
+                word[char_index++] = ch;
+            }
+        }
+    }
+
+    // Перевіряємо останнє слово після завершення вводу
+    if (char_index > 0) {
+        word[char_index] = '\0';
+        if (is_valid_word(word)) {
+            words_count++;
+        }
+    }
+
+    printf("\nWORDS: %d", words_count);
+}
 
 

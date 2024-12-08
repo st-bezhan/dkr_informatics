@@ -6,6 +6,7 @@
 
 int main(void) {
     unsigned int program = select_program_to_execute();
+
     switch (program) {
         case 1: {
             calculate_sum();
@@ -29,7 +30,8 @@ int main(void) {
             break;
         }
         case 3: {
-
+            get_keyboard_input();
+            getchar();
         }
         default: {
             exit(1);
