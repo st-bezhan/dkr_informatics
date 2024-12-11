@@ -146,8 +146,8 @@ void get_keyboard_input() {
         }
     }
 
-    write_result_to_file(words_count);
     printf("\nWORDS: %d", words_count);
+    write_result_to_file(words_count);
 }
 
 
