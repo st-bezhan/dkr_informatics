@@ -94,13 +94,26 @@ void input_random_array(int arr[], int size) {
 //TASK 3
 unsigned int is_valid_word(const char *word) {
     unsigned int has_alphabetical_numerical_value = 0;
-    for (unsigned i = 0; word[i] != '\0'; i ++) {
+    for (unsigned i = 0; word[i] != '\0'; i++) {
         if (isalnum(word[i])) {
             has_alphabetical_numerical_value = 1;
         }
     }
     return has_alphabetical_numerical_value;
 }
+
+void write_result_to_file(unsigned int amount_of_words) {
+    FILE *output_file = fopen("result.txt", "w");
+
+    if (output_file == NULL) {
+        printf("\nUnable to create file. Exiting.");
+        exit(1);
+    }
+
+    fprintf(output_file, "%s %d %s", "Found ", amount_of_words, " words.");
+    fclose(output_file);
+}
+
 void get_keyboard_input() {
     unsigned int const max_word_length = 1000;
     char ch, word[1000] = { 0 };
@@ -111,23 +124,21 @@ void get_keyboard_input() {
 
     while ((ch = getchar()) != EOF) {
         if (isspace(ch)) {
-            // Якщо зустріли роздільник, перевіряємо, чи слово є валідним
             if (char_index > 0) {
-                word[char_index] = '\0'; // Завершуємо слово
+                word[char_index] = '\0'; // end of word
                 if (is_valid_word(word)) {
                     words_count++;
                 }
-                char_index = 0; // Скидаємо індекс для нового слова
+                char_index = 0; // new word start
             }
         } else {
-            // Додаємо символ до слова
+
             if (char_index < max_word_length - 1) {
                 word[char_index++] = ch;
             }
         }
     }
 
-    // Перевіряємо останнє слово після завершення вводу
     if (char_index > 0) {
         word[char_index] = '\0';
         if (is_valid_word(word)) {
@@ -135,6 +146,7 @@ void get_keyboard_input() {
         }
     }
 
+    write_result_to_file(words_count);
     printf("\nWORDS: %d", words_count);
 }
 

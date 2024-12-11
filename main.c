@@ -31,11 +31,12 @@ int main(void) {
         }
         case 3: {
             get_keyboard_input();
-            getchar();
         }
         default: {
             exit(1);
         }
     }
+    printf("\nPress Enter to exit");
+    getchar();
     return 0;
 }
